@@ -8,7 +8,7 @@ import time
 
 ZIP_CODE = "98052"
 COUNTRY_CODE = "US"
-CLOUD_MIN = 30
+CLOUD_MIN = 0
 CLOUD_MAX = 70
 SEARCH_RADIUS_KM = 25  
 DAYS_BACK = 3          
