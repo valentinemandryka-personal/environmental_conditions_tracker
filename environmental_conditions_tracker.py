@@ -65,13 +65,13 @@ def check_conditions():
             
             ebird_res = requests.get(ebird_url, headers=headers).json()
             
-            if isinstance(ebird_res, list) and len(ebird_res) > 0:
-                print("Target species detected!")
+        if isinstance(ebird_res, list) and len(ebird_res) > 0:
+                print("Avian activity detected!")
                 alert_text = (
                     f"🟢 ALERT: Area Observer\n"
                     f"Location: {ZIP_CODE}\n"
                     f"Clouds: {clouds}%\n"
-                    f"Target species ({TARGET_SPECIES}) detected nearby.\n"
+                    f"High avian activity detected nearby.\n"
                     f"Conditions: OPTIMAL."
                 )
                 send_telegram_alert(alert_text)
