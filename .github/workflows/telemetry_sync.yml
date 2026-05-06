@@ -1,0 +1,29 @@
+name: Node Telemetry Sync
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Запуск каждый час в 00 минут
+  workflow_dispatch: # Кнопка для ручного запуска теста
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      - name: Install dependencies
+        run: pip install requests
+        
+      - name: Run Telemetry Scan
+        env:
+          OWM_API_KEY: ${{ secrets.OWM_API_KEY }}
+          EBIRD_API_KEY: ${{ secrets.EBIRD_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python environmental_conditions_tracker.py
