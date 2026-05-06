@@ -65,7 +65,7 @@ def check_conditions():
             
             ebird_res = requests.get(ebird_url, headers=headers).json()
             
-        if isinstance(ebird_res, list) and len(ebird_res) > 0:
+            if isinstance(ebird_res, list) and len(ebird_res) > 0:
                 print("Avian activity detected!")
                 alert_text = (
                     f"🟢 ALERT: Area Observer\n"
